@@ -14,3 +14,19 @@
  *= require_self
  */
 @import "bootstrap/scss/bootstrap";
+$fa-font-path: "@fortawesome/fontawesome-free/webfonts";
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/regular";
+
+/***** 共通  *****/
+.mw-md {
+  max-width: 700px;
+}
+
+.mw-lg {
+  max-width: 960px;
+}
+
+.mw-xl {
+  max-width: 1140px;
+}
