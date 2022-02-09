@@ -12,3 +12,4 @@ Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
 import "bootstrap/dist/js/bootstrap";
+require("../stylesheets/application.scss");
