@@ -1,0 +1,20 @@
+<h1>投稿詳細</h1>
+<p>店舗名 <%= @gym.name %></p>
+<p>住所 <%= @gym.address %></p>
+<p>電話番号 <%= @gym.TEL %></p>
+<p>
+  <p id="gym-<%= @gym.id %>">
+    <p id="gym-<%= @gym.id %>">
+      <% if @gym.liked_by?(current_user) %>
+        <%= render "like", post: @gym %>
+      <% else %>
+        <%= render "dislike", post: @gym %>
+      <% end %>
+    </p>
+    <p>
+      <% if current_user.id == @gym.user_id %>
+        <%= link_to "編集", edit_gym_path(@gym) %>
+        <%= link_to "削除", gym_path(@gym), method: :delete, data: { confirm: "削除しますか？" } %>
+      <% end %>
+    </p>
+  </p>
