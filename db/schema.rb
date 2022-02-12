@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_09_132507) do
+ActiveRecord::Schema.define(version: 2022_02_12_022149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "gym_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "content", null: false
+    t.index ["gym_id"], name: "index_comments_on_gym_id"
+    t.index ["user_id", "gym_id"], name: "index_comments_on_user_id_and_gym_id", unique: true
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "gyms", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.text "URL"
+    t.string "TEL"
+    t.string "address", null: false
+    t.integer "ward", null: false
+    t.string "img"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_gyms_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "gym_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gym_id"], name: "index_likes_on_gym_id"
+    t.index ["user_id", "gym_id"], name: "index_likes_on_user_id_and_gym_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +61,9 @@ ActiveRecord::Schema.define(version: 2022_02_09_132507) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "gyms"
+  add_foreign_key "comments", "users"
+  add_foreign_key "gyms", "users"
+  add_foreign_key "likes", "gyms"
+  add_foreign_key "likes", "users"
 end
