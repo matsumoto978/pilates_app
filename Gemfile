@@ -27,8 +27,9 @@ gem 'devise'
 gem 'rails-i18n', '~> 6.0'
 gem 'devise-i18n'
 
-# 画像投稿
+# 画像投稿・加工
 gem 'carrierwave', '~> 2.0'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
