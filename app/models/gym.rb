@@ -8,7 +8,7 @@ class Gym < ApplicationRecord
   validates :address, presence: true
   validates :ward, exclusion: { in: %w[---], message: "を選択してください"}
   
-  mount_uploader :image, ImageUploader
+  mount_uploader :img, ImageUploader
 
   DEFALULATE = 0.0
 
