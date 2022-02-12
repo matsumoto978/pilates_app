@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+    <% @gyms.each.with_index(1) do |gym| %>
+      <div class="col-12 col-md-6 col-lg-4 text-card-container">
+        <div class="card content-card border-dark mb-3">
+          <%= link_to gym_path(gym.id), class:"abc" do %>
+            <div class="card-body text-dark text-card-body">
+              <p id="text-<%= gym.id %>"></p>
+              <p class="card-text text-title"><%= gym.name %></p>
+              <p>【<%= gym.ward %>】</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
