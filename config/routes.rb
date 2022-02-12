@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "homes#index"
+  root "gyms#index"
+  resources :gyms
 
   devise_for :users, controllers: {
                        registrations: "users/registrations",
