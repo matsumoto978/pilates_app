@@ -1,7 +1,7 @@
-<% if @post.errors.any? %>
+<% if @gym.errors.any? %>
   <div>
     <ul>
-      <% @post.errors.full_messages.each do |msg| %>
+      <% @gym.errors.full_messages.each do |msg| %>
         <li><span style="color: red;"><%= msg %></span></li>
       <% end %>
     </ul>
