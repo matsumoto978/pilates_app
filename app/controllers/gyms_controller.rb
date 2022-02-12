@@ -1,8 +1,8 @@
 class GymsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
-
+  before_action :set_gym, only: %i[show edit update destroy]
+  before_action :authenticate_user!, { only: [:new, :create] }
   def index
-    @gyms = Gym.order(created_at: :desc)
+    @gyms = Gym.all
   end
 
   def show
@@ -13,8 +13,13 @@ class GymsController < ApplicationController
   end
 
   def create
-    gym = Gym.create!(params)
-    redirect_to gym, notice: "投稿しました"
+    @gym = current_user.gyms.new(gym_params)
+    if @gym.save
+      redirect_to gyms_path, notice: "投稿しました"
+    else
+      flash.now[:alert] = "登録に失敗しました"
+      render :new
+    end
   end
 
   def edit
