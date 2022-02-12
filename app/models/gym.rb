@@ -5,8 +5,9 @@ class Gym < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :name, presence: true
-  validates :ward, exclusion: { in: %w[---], message: "を選択してください"}
   validates :address, presence: true
+  validates :ward, exclusion: { in: %w[---], message: "を選択してください"}
+  
 
   DEFALULATE = 0.0
 

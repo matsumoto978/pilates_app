@@ -2,7 +2,7 @@ class GymsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @gyms = Gym.order(id: asc)
+    @gyms = Gym.order(created_at: :desc)
   end
 
   def show
@@ -30,8 +30,7 @@ class GymsController < ApplicationController
     redirect_to root_path, alert: "削除しました"
   end
 
-　private
-
+ private
   def set_gym
     @gym = Gym.find(params[:id])
   end

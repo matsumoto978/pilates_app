@@ -1,29 +1,29 @@
-<%= form_with model: @gym, local: true do |form| %>
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control", required: true %>
-  </div>
-  <div class=form-group>
-    <span class="essential">※</span><%= f.label :ward, "エリア" %>
-    <%= f.select :ward, Gym.ward.keys.map {|k| [k, k]}, {}, {class: "form-control", style: "margin-bottom: 15px;", data: {} } %>
-  </div>
-  <div class="form-group">
-    <span class="essential">※</span><%= form.label :address, "住所" %>
-    <%= form.text_field :address, autofocus: true, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= form.label :URL %>
-    <%= form.url_field :URL, autofocus: true, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= form.label :TEL, "電話番号" %>
-    <%= form.text_field :TEL, autofocus: true, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :img, "店の様子" %>
-    <%= f.file_field :img %>
-  </div>
-  <div class="search-button">
-    <%= f.submit button_value, class: "btn btn-primary btn-block" %>
-  </div>
-<%= end %>
+<div class="form-wrapper">
+  <%= form_with model: @gym, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :name, "店舗名" %>
+      <%= form.text_field :name, autofocus: true, class: "form-control" %>
+    </div>
+    <div class=form-group>
+      <span class="essential">※</span><%= form.label :ward, "エリア" %>
+      <%= form.select :ward, Gym.wards.keys.map {|k| [k, k]}, {}, {class: "form-control", style: "margin-bottom: 15px;", data: {} } %>
+    </div>
+    <div class="form-group">
+      <span class="essential">※</span><%= form.label :address, "住所" %>
+      <%= form.text_field :address, autofocus: true, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :URL, "URL" %>
+      <%= form.url_field :URL, autofocus: true, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :TEL, "電話番号" %>
+      <%= form.text_field :TEL, autofocus: true, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :img, "店の様子" %>
+      <%= form.file_field :img %>
+    </div>
+    <%= form.submit "投稿" %>
+  <% end %>
+</div>

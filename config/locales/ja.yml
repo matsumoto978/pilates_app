@@ -1,6 +1,9 @@
 ---
 ja:
   activerecord:
+    enums: 
+      gym:
+        ward:
     model:
       gym: 店舗
       like: いいね
