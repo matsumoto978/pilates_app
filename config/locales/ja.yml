@@ -1,6 +1,25 @@
 ---
 ja:
   activerecord:
+    model:
+      gym: 店舗
+      like: いいね
+      comment: コメント
+    attributes:
+      gym:
+        name: 店舗名
+        URL: url
+        TEL: 電話番号
+        address: 住所
+        ward: 区
+        img: 画像
+　　　　　user: ユーザー
+      like:
+        gym: 店舗
+        user: ユーザー
+      comment:
+        gym: 店舗
+        user: ユーザー
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
