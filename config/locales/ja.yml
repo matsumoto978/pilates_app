@@ -1,7 +1,7 @@
 ---
 ja:
   activerecord:
-    enums: 
+    enums:
       gym:
         ward:
     model:
@@ -16,7 +16,7 @@ ja:
         address: 住所
         ward: 区
         img: 画像
-　　　　　user: ユーザー
+        user: ユーザー
       like:
         gym: 店舗
         user: ユーザー

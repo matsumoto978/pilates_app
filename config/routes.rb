@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "gyms#index"
-  resources :gyms
+  resources :gyms do
+    resource :likes, only: [:create, :destroy]
+  end
 
   devise_for :users, controllers: {
                        registrations: "users/registrations",
