@@ -6,9 +6,9 @@
   <p id="gym-<%= @gym.id %>">
     <p id="gym-<%= @gym.id %>">
       <% if @gym.liked_by?(current_user) %>
-        <%= render "like", post: @gym %>
+        <%= render "like", gym: @gym %>
       <% else %>
-        <%= render "dislike", post: @gym %>
+        <%= render "dislike", gym: @gym %>
       <% end %>
     </p>
     <p>
@@ -18,3 +18,4 @@
       <% end %>
     </p>
   </p>
+</p>
