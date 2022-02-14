@@ -1,11 +1,8 @@
 class GymsController < ApplicationController
-  before_action :set_gym, only: %i[show edit update destroy]
-  before_action :authenticate_user!, { only: [:new, :create] }
+  before_action :set_gym, only: %i[edit update destroy]
+  before_action :authenticate_user!
   def index
-    @gyms = Gym.all
-  end
-
-  def show
+    @gyms = Gym.includes(:user, :likes).order(:created_at)
   end
 
   def new
@@ -22,6 +19,10 @@ class GymsController < ApplicationController
     end
   end
 
+  def show
+    @gym = Gym.find(params[:id])
+  end
+
   def edit
   end
 
@@ -35,13 +36,14 @@ class GymsController < ApplicationController
     redirect_to root_path, alert: "削除しました"
   end
 
- private
-  def set_gym
-    @gym = Gym.find(params[:id])
-  end
+  private
   
-
   def gym_params
     params.require(:gym).permit(:name, :URL, :TEL, :address, :ward, :img, :user_id)
   end
+  
+  def set_gym
+    @gym = current_user.gyms.find(params[:id])
+  end
+  
 end

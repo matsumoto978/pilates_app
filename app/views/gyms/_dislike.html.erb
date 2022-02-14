@@ -1,4 +1,2 @@
-<%# 「いいね」していない（クリックすると「いいね！」にする） %>
-<%= link_to gym_likes_path(gym), {method: :delete, remote: true} do %>
-  <i class="fa-regular fa-thumbs-up"></i>
-<% end %>
+<%= link_to "★", gym_likes_path(gym), method: :gym, remote: true %>
+<%= gym.likes_count %>
