@@ -18,4 +18,8 @@ class Gym < ApplicationRecord
     大田区: 11, 世田谷区: 12, 渋谷区: 13, 中野区: 14, 杉並区: 15, 豊島区: 16, 北区: 17, 荒川区: 18, 板橋区: 19, 
     練馬区: 20, 足立区: 21, 葛飾区: 22, 江戸川区: 23,
   }
+
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
 end

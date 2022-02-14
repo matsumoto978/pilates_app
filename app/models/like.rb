@@ -1,8 +1,13 @@
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :gym
-   validates :user_id, uniqueness: {
-                        scope: :post_id,
-                        message: "は同じ投稿に2回以上いいねはできません",
-                      }
+
+  validates :gym_id, uniqueness: { scope: :user_id }
+  validate :my_post_cannot_like
+
+  private
+
+  def my_post_cannot_like
+    errors.add(:base) if user_id == gym.user_id
+  end
 end
